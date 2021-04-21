@@ -17,7 +17,7 @@ class PostController extends Controller
         $postModel->by = $post['by'];
 
         if ($postModel->save())
-            return response()->json($post, 201);
+            return response()->json(['message' => $post], 201);
 
         return response()->json(['message' => '400 Bad Request'], 400);
     }
@@ -30,7 +30,7 @@ class PostController extends Controller
         if (empty($posts))
             return response()->json(['message' => '202 Accepted'], 202);
 
-        return response()->json($posts, 200);
+        return response()->json(['message' => $posts], 200);
     }
 
     //Retorna somente o post passado por ID, se não existir retorna 202
@@ -41,7 +41,7 @@ class PostController extends Controller
         if (empty($post))
             return response()->json(['message' => '202 Accepted'], 202);
 
-        return response()->json($post, 200);
+        return response()->json(['message' => $post], 200);
     }
 
     //Apaga o post passado por ID, se não não existir retorna 202, caso exista retorna 200
@@ -50,7 +50,7 @@ class PostController extends Controller
         $post = Post::find($id);
 
         if (empty($post))
-            return response()->json(['message' => '202 Accepted'], 202);
+            return response()->json(['message' => '404 Not Found'], 404);
 
         if (Post::find($id)->delete())
             return response()->json(['message' => '200 OK'], 200);
@@ -62,12 +62,10 @@ class PostController extends Controller
         $post = Post::find($id);
 
         if (empty($post))
-            return response()->json(['message' => '204 No Content'], 204);
+            return response()->json(['message' => '400 Bad Request'], 400);
 
         if ($post->update($request->all()))
-            return response()->json($post, 200);
-
-        return response()->json(['message' => '400 Bad Request'], 400);
+            return response()->json(['message' => $post], 200);
     }
 
     /* Verifica se o post existe pelo ID, caso não exista verifica se o corpo tem todos os parâmetros e cria um novo post,
@@ -78,6 +76,7 @@ class PostController extends Controller
 
         if (empty($post)) {
             $postRequest = $request->all();
+
             if (empty($postRequest['title']) || empty($postRequest['description']) || empty($postRequest['by']))
                 return response()->json(['message' => '400 Bad Request'], 400);
 
@@ -87,7 +86,7 @@ class PostController extends Controller
             $postModel->by = $postRequest['by'];
 
             if ($postModel->save())
-                return response()->json($postModel, 201);
+                return response()->json(['message' => $postModel], 201);
         }
 
         return response()->json(['message' => '400 Bad Request'], 400);
