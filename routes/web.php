@@ -14,9 +14,13 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return 'Use /api';
 });
 
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('post', 'PostController@createPost');
+    $router->get('post', 'PostController@getAllPost');
+    $router->get('post/{id}', 'PostController@getOnePost');
+    $router->delete('post/{id}', 'PostController@deletePost');
+    $router->put('post/{id}', 'PostController@putPost');
 });
