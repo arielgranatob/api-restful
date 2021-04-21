@@ -20,7 +20,8 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('post', 'PostController@createPost');
     $router->get('post', 'PostController@getAllPost');
-    $router->get('post/{id}', 'PostController@getOnePost');
+    $router->get('post/{id}', 'PostController@getOnlyPost');
     $router->delete('post/{id}', 'PostController@deletePost');
     $router->put('post/{id}', 'PostController@putPost');
+    $router->patch('post/{id}', 'PostController@patchPost');
 });
