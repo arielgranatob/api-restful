@@ -17,6 +17,6 @@
 
 ### Parâmetros
 
-title: "Título do post do blog"
-description: "Descrição completa do post do blog"
-by: "Autor do post do blog"
+- title: "Título do post do blog"
+- description: "Descrição completa do post do blog"
+- by: "Autor do post do blog"
