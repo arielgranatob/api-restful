@@ -14,3 +14,9 @@
 - DELETE /posts/1: Delete o post com respectivo ID
 - PUT /posts/1: Atualiza o post com respectivo ID
 - PATCH /posts/1: Atualiza parcialmente o post com respectivo ID
+
+### Parâmetros
+
+title: "Título do post do blog"
+description: "Descrição completa do post do blog"
+by: "Autor do post do blog"
