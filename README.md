@@ -1,7 +1,10 @@
-### Como instalar
+### Comandos para instalar e rodar
 
 - git clone *https://github.com/arielgranatob/api-restful*
-- composer update
+- cd api-restful
+- composer install
+- copie o arquivo *api-restful/configurar* e substitua em *api-restful/vendor/laravel/lumen-framework/config*
+- php -S localhost:8000 -t public
 
 ### Métodos API Restful
 
